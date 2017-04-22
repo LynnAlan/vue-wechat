@@ -7,21 +7,23 @@ module.exports = {
     sourceType: 'module'
   },
   env: {
-    browser: true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true
   },
-  // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
   // required to lint *.vue files
   plugins: [
     'html'
   ],
   // add your custom rules here
   'rules': {
-    // allow paren-less arrow functions
-    'arrow-parens': 0,
-    // allow async-await
-    'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+
+    "no-with": 2,//禁用with
+    "curly": [2, "all"],//必须使用 if(){} 中的{}
+    "use-isnan": 2,//禁止比较时使用NaN，只能用isNaN()
+    "semi-spacing": [0, {"before": false, "after": true}],//分号前后空格
   }
 }
