@@ -1,6 +1,6 @@
 <template>
   <div class="container"><!-- 容器 -->
-      <div class="body"><!-- 身体 -->
+      <div class="body"  id="droptarget" draggable="true"><!-- 身体 -->
         <div class="trousers"><!-- 裤子 -->
           <div class="condoleBelt"><!-- 吊带 -->
             <div class="left"></div>
@@ -46,14 +46,24 @@
 </template>
 
 <script>
+  import EventUtil from '../assets/js/util'
   export default {
-    data() {
-      return {}
-    },
-    computed: {},
-    methods: {},
-    mounted() {
-    }
+      data() {
+          return {}
+      },
+      computed: {},
+      methods: {
+
+      },
+      mounted() {
+          let droptarget = document.getElementById("droptarget");
+          EventUtil.addHandler(droptarget,"dragover",function (event) {
+              EventUtil.preventDefault(event);
+          })
+          EventUtil.addHandler(droptarget,"dragenter",function (event) {
+              EventUtil.preventDefault(event);
+          })
+      }
   }
 </script>
 
@@ -88,9 +98,147 @@
         background: rgb(32,116,160);
         position: absolute;
         bottom: 100px;
-        left:34px
+        left:34px;
+      }
+      .left{
+        width: 100px;
+        height: 16px;
+        border:5px solid #000;
+        background: rgb(32,116,160);
+        position: absolute;
+        top:-90px;
+        left:-35px;
+        z-index: 2;
+        transform:rotate(45deg);
+        &::after{
+          content: '';
+          background: #000;
+          width: 6px;
+          height: 6px;
+          border-radius: 3px;
+          position: absolute;
+          left: 86px;
+          top:5px;
+        }
+      }
+      .right{
+        width: 100px;
+        height: 16px;
+        border:5px solid #000;
+        background: rgb(32,116,160);
+        position: absolute;
+        top:-90px;
+        left:162px;
+        z-index: 2;
+        transform:rotate(135deg);
+        &::after{
+          content: '';
+          background: #000;
+          width: 6px;
+          height: 6px;
+          border-radius: 3px;
+          position: absolute;
+          left: 86px;
+          top:5px;
+        }
+      }
+      .pocket{
+        width: 60px;
+        height: 45px;
+        border:6px solid #000;
+        border-radius: 0px 0px 25px 25px;
+        position: absolute;
+        bottom:65px;
+        left:84px;
+      }
+      .line_right{
+        width: 30px;
+        height: 30px;
+        border-bottom-left-radius: 100px;
+        border-bottom:6px solid #000;
+        border-left:6px solid #000;
+        position: absolute;
+        left: 0;
+        bottom:60px;
+        -webkit-transform:rotate(-75deg);
+      }
+      .line_left{
+        width: 30px;
+        height: 30px;
+        border-bottom-right-radius: 100px;
+        border-bottom:6px solid #000;
+        border-right:6px solid #000;
+        position: absolute;
+        right: 0;
+        bottom:63px;
+        -webkit-transform:rotate(75deg);
+      }
+      .line_bottom{
+        height: 40px;
+        border:3px solid #000;
+        border-radius: 3px;
+        position: absolute;
+        left:118px;
+        bottom: 0px;
       }
     }
+  }
+  .eyes{
+    position: relative;
+    z-index: 3;
+    .leftEye,.rightEye{
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      border:6px solid #000;
+      background: #fff;
+      position: absolute;
+      top:60px;
+      left: 27px;
+    }
+    .leftEye{
+      left: 124px;
+    }
+  }
+  .eyes .leftEye .left_blackEye,
+  .eyes .rightEye .right_blackEye{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #000;
+    position: absolute;
+    top:24px;
+    left:22px;
+  }
+  .eyes .leftEye .left_blackEye .left_white,
+  .eyes .rightEye .right_blackEye .right_white{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top:7px;
+    left:17px;
+  }
+  .eyes .leftEye .left_blackEye .left_white{
+    top:4px;
+    left:17px;
+  }
+  .eyes .leftEye:after,
+  .eyes .rightEye:after{
+    content: '';
+    width: 28px;
+    height: 18px;
+    background: #000;
+    position: absolute;
+    left:-30px;
+    top:37px;
+    -webkit-transform:skewX(20deg) rotate(7deg);
+  }
+  .eyes .leftEye:after{
+    left:89px;
+    top:37px;
+    -webkit-transform:skewX(-20deg) rotate(-7deg);
   }
 
 </style>
