@@ -42,20 +42,63 @@
         <div class="right_foot"></div>
       </div>
       <div class="groundShadow"></div><!-- 脚底阴影 -->
+    <div @click="goBack()">goBack</div>
+    <div>{{num}}</div>
+    <div @click="changename('我是谁')">测试</div>
+    <div>{{name}}</div>
   </div>
 </template>
 
 <script>
   import EventUtil from '../assets/js/util'
+  import {mapGetters,mapActions } from 'vuex'
   export default {
       data() {
-          return {}
+          return {
+              num:0
+          }
       },
-      computed: {},
+      computed: {
+          ...mapGetters([
+              'name'
+          ])
+      },
       methods: {
+          goBack(){
+              this.$router.push("/");
+          },
+          addNum(){
+              this.num = 5;
+              //this.$store.dispatch('changeName', "Yangliin")
+          },
+          ...mapActions({
+              changename:'changeName'
+          })
 
       },
+      beforeCreate(){
+          //this.num = '2'
+
+          console.log("beforeCreate");
+      },
+      created(){
+
+          this.num = this.num + 1;
+          console.log("created");
+      },
+      beforeMount(){
+
+          this.num = this.num + ' 11';
+          console.log("beforeMount");
+      },
+      beforeUpdate(){
+
+          console.log("beforeUpdate");
+      },
       mounted() {
+          console.log(this.$store.state.state.name);
+
+          console.log("mounted");
           let droptarget = document.getElementById("droptarget");
           EventUtil.addHandler(droptarget,"dragover",function (event) {
               EventUtil.preventDefault(event);
