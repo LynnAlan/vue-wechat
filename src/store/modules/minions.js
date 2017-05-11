@@ -3,7 +3,7 @@
  */
 import * as types from '../mutation-types'
 
-// initial state
+// state
 const state = {
     all: [],
     name:'alanLynn'
@@ -11,20 +11,22 @@ const state = {
 
 // getters
 const getters = {
-    name:state => state.name
+    name:state => state.name,
+
 }
 
 // actions
 const actions = {
-    changeName({commit},name='wo'){
-        commit(types.CHANGE_NAME, { name });
+    changeName({dispatch},name='wo'){
+       dispatch(types.CHANGE_NAME, { name });
     }
 }
 
 // mutations
 const mutations = {
-    [types.CHANGE_NAME] (state, { name }) {
-        state.name = name;
+    [types.CHANGE_NAME] (state, { data }) {
+        state.name = {...state.name, ...data};
+        state.name = data;
     }
 }
 

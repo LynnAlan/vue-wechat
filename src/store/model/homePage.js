@@ -1,0 +1,45 @@
+/**
+ * Created by Administrator on 2017/5/10 0010.
+ */
+
+const message = [
+  {
+    headPortrait:'',
+    name:'达康书记',
+    time:'2017/02/06',
+    msg:[
+      {
+        type:1,
+        text:'没有'
+      },
+      {
+        type:2,
+        text:'没有'
+      },
+      {
+        type:1,
+        text:'没有'
+      }
+    ]
+  },
+  {
+    headPortrait:'',
+    name:'达康书记',
+    time:'2017/02/06',
+    msg:[
+      {
+        type:1,
+        text:'没有'
+      },
+      {
+        type:2,
+        text:'没有'
+      },
+      {
+        type:1,
+        text:'没有'
+      }
+    ]
+  }
+]
+export {message}

@@ -7,38 +7,53 @@
 
     <div class="homepage-content">
       <ul class="">
-        <li class="homepage-content-item">
+        <li class="homepage-content-item" v-for="item in userMessage" @click="goDetail(item)">
           <div class="head-portrait">
+            <span class="warning"></span>
             <img src="../assets/img/dakang.jpg" alt="">
           </div>
           <div class="chat-text">
             <div class="name">
-              <span class="memo-name">达康书记</span>
-              <span class="time">下午4:19</span>
+              <span class="memo-name">{{item.name}}</span>
+              <span class="time">{{item.time}}</span>
             </div>
             <div class="text">
-              <span>晚上好</span>
+              <span>{{item.msg[0].text}}</span>
             </div>
           </div>
         </li>
       </ul>
     </div>
-    <div @click="goPage()">gopage</div>
+    <div @click="goMinions()">去看小黄人</div>
 
 
   </div>
 </template>
 
 <script>
+  import {mapGetters,mapActions} from 'vuex'
   export default {
       data() {
           return {}
       },
-      computed: {},
+      computed: {
+          ...mapGetters({
+              userMessage:"message"
+          })
+      },
       methods: {
-          goPage(){
+          goMinions(){
               this.$router.push("/minions");
-          }
+          },
+          goDetail(data){
+              this.$router.push("/messagedetail");
+              this.add(data);
+          },
+        ...mapActions({
+              add: 'addMessage'
+          })
+
+
       },
       mounted() {
           var str = "pydaaasdsrhksaoashgas";
@@ -74,6 +89,8 @@
               })(arr);
           }
           findMinLetter(str);
+          console.log(this.userMessage,'userMessage');
+          console.log(this.$store.state,'this.$store.state');
       }
   }
 </script>
@@ -109,11 +126,10 @@
     }
 
   }
-
   .homepage-content {
     margin-top: 50px;
-
     &-item{
+      position: relative;
       margin-left: 10px;
       border-top:1px solid #bbbaba;
       padding: 10px 0;
@@ -133,6 +149,8 @@
       .head-portrait {
         img{
           width: 50px;
+          border-radius: 5px;
+          margin-right: 5px;
         }
         display: inline-block;
       }
@@ -145,6 +163,16 @@
     }
     &-item:last-of-type{
       border-bottom: 1px solid #bbbaba;
+    }
+    .warning{
+      position: absolute;
+      content: '';
+      height: 6px;
+      width:6px;
+      border-radius: 50%;
+      background: red;
+      left: 46px;
+      top: 8px;
     }
   }
 

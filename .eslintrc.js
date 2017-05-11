@@ -31,7 +31,7 @@ module.exports = {
     "comma-style": [2, "last"],//逗号风格，换行时在行首还是行尾
     "complexity": [0, 11],//循环复杂度
     "curly": [2, "all"],//必须使用 if(){} 中的{}
-    "indent": [2, 4],//缩进风格
+    // "indent": [2, 4],//缩进风格
     "use-isnan": 2,//禁止比较时使用NaN，只能用isNaN()
     "semi-spacing": [0, {"before": false, "after": true}],//分号前后空格
   }
