@@ -23,7 +23,6 @@ const mutations = {
   },
   [types.ADD_MESSAGE] (state,data){
    state.message = {...state.message,...data};
-
   }
 }
 

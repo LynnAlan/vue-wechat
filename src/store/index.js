@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import  * as  actions from './actions'
 import minions from './modules/minions'
 import state from './modules/state'
 import messagedetail from './modules/messageDetail'
@@ -12,5 +13,6 @@ export default new Vuex.Store({
         state,
         homepage,
         messagedetail
-    }
+    },
+    actions
 })

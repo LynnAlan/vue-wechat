@@ -102,7 +102,8 @@
       color: #fff;
       background: #000;
       font-size: 16px;
-      padding: 10px 0;
+      height: 40px;
+      line-height: 40px;
       position: fixed;
       width: 100%;
       top: 0;
