@@ -27,16 +27,9 @@ const mutations = {
   }
 }
 
-const actions = {
-  addMessage({ commit }, data) {
-
-    commit(types.ADD_MESSAGE, data)
-  }
-}
 
 export default {
   state,
   getters,
-  actions,
   mutations
 }

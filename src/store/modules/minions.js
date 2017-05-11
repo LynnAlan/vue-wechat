@@ -15,12 +15,6 @@ const getters = {
 
 }
 
-// actions
-const actions = {
-    changeName({dispatch},name='wo'){
-       dispatch(types.CHANGE_NAME, { name });
-    }
-}
 
 // mutations
 const mutations = {
@@ -33,6 +27,5 @@ const mutations = {
 export default {
     state,
     getters,
-    actions,
     mutations
 }

@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
-import Test from '@/components/Test'
-import Minions from '@/components/Minions'
-import Homepage from '@/components/HomePage'
-import MessageDetail from '@/components/MessageDetail'
 
+const Test = resolve => require(['@/components/Test'], resolve)
+const Minions = resolve => require(['@/components/Minions'],resolve)
+const Homepage = resolve =>require(['@/components/HomePage'],resolve)
+const MessageDetail = resolve =>require(['@/components/MessageDetail'],resolve)
 Vue.use(Router)
-
 export default new Router({
     routes: [
         {

@@ -23,16 +23,8 @@ const mutations = {
   }
 }
 
-const actions = {
-    deleteMessage({ dispatch }, id) {
-      dispatch(types.DELETE_MESSAGE, id)
-    }
-}
-
-
 export default {
     state,
     getters,
-    actions,
     mutations
 }
