@@ -155,9 +155,10 @@
         display: inline-block;
       }
       .chat-text {
-        width: calc(100% - 60px);
+        width: calc(100% - 70px);
         display: inline-block;
         vertical-align: top;
+        margin-right: 10px;
       }
 
     }

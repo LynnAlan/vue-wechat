@@ -10,7 +10,7 @@ const message = [
     msg:[
       {
         type:1,
-        text:'没有'
+        text:'你有没有去过大风厂'
       },
       {
         type:2,
@@ -18,7 +18,7 @@ const message = [
       },
       {
         type:1,
-        text:'没有'
+        text:'到底有没有'
       }
     ]
   },

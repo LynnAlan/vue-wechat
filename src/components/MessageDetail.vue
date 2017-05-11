@@ -16,14 +16,15 @@
       </header>
       <section class="message-detail-content">
         <ul>
-          <li class="left-message-text">
-            <span class="img"><img src="../assets/img/dakang.jpg" alt=""></span>
-            <span class="text">这是一个测试数据</span>
-          </li>
-          <li class="right-message-text">
-
-            <span class="text">这是一个测试数据</span>
-            <span class="img"><img src="../assets/img/dakang.jpg" alt=""></span>
+          <li v-for="item in message.msg">
+            <div class="left-message-text" v-if="item.type == 1">
+              <span class="img"><img src="../assets/img/dakang.jpg" alt=""></span>
+              <span class="text">{{item.text}}</span>
+            </div>
+            <div class="right-message-text"  v-if="item.type == 2">
+              <span class="text">{{item.text}}</span>
+              <span class="img"><img src="../assets/img/dakang.jpg" alt=""></span>
+            </div>
           </li>
         </ul>
       </section>
@@ -32,17 +33,32 @@
 </template>
 
 <script>
+   import {mapGetters} from 'vuex'
     export default {
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+          ...mapGetters({
+              message:'itemMessage'
+          })
+        },
         methods: {
             goBack(){
                 this.$router.push("/");
             }
         },
-        mounted() {
+        created: function () {
+          console.log(1)
+        },
+        mounted: function () {
+          console.log(2)
+        },
+        activated: function () {
+          console.log(3)
+        },
+        deactivated: function () {
+          console.log(4)
         }
     }
 </script>
@@ -88,7 +104,7 @@
           img{
             display: inline-block;
             height: 40px;
-            width: 40px;
+
           }
           .left-message-text{
             .img{
