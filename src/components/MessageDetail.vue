@@ -84,14 +84,12 @@
              font-size: 14px;
            }
           li:nth-last-of-type(1){
-
           }
         }
-
       }
 
       &-content{
-        background: #efefef;
+        background: #ebebeb;
         margin-top: 40px;
         height: calc(100% - 40px);
         position: absolute;
@@ -107,8 +105,11 @@
 
           }
           .left-message-text{
+
+            overflow: hidden;
             .img{
-              margin-right: 6px;
+              margin-right: 10px;
+              float: left;
             }
             .text{
               background: #fff;
@@ -116,7 +117,11 @@
               padding: 6px;
               border-radius: 3px;
               position: relative;
-              border: 1px solid #bbb8b8;
+              border: 1px solid #d5d5d5;
+              display: inline-block;
+              word-wrap:break-word;
+              max-width: 67%;
+              float: left;
             }
             .text:after{
               position: absolute;
@@ -132,7 +137,7 @@
               content: '';
               border-width:6px 6px 6px 0;
               border-style:solid;
-              border-color:transparent #bbb8b8 transparent transparent;/*透明 灰 透明 透明 */
+              border-color:transparent #d5d5d5 transparent transparent;/*透明 灰 透明 透明 */
               left:-7px;
               top:7px;
             }
@@ -144,12 +149,12 @@
             }
             text-align: right;
             .text{
-              background: #86f186;
+              background: #9fe75a;
               color: #000;
               padding: 6px;
               border-radius: 3px;
               position: relative;
-              border: 1px solid #bbb8b8;
+              border: 1px solid #d5d5d5;
             }
             .text:after{
               position: absolute;
@@ -165,7 +170,7 @@
               content: '';
               border-width:6px 0 6px 6px ;
               border-style:solid;
-              border-color:transparent transparent transparent  #bbb8b8;/*透明 灰 透明 透明 */
+              border-color:transparent transparent transparent  #d5d5d5;/*透明 灰 透明 透明 */
               right:-7px;
               top:7px;
             }

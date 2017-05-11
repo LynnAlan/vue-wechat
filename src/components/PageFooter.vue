@@ -1,9 +1,10 @@
 <template>
     <div class="footer">
       <ul>
-        <li>
-          <div class="chat chat-active"></div>
-          <div>微信</div>
+        <li @click="goHome()">
+          <!-- <router-link :to="/"> test </router-link> -->
+            <div class="chat chat-active"></div>
+            <div>微信</div>
         </li>
         <li>
           <div>通讯录</div>
@@ -24,7 +25,12 @@
             return {}
         },
         computed: {},
-        methods: {},
+        methods: {
+            goHome(){
+                this.$router.push("/");
+            }
+
+        },
         mounted() {
         }
     }
@@ -32,7 +38,8 @@
 
 <style lang="scss" scoped>
   .footer{
-    background: #efefef;
+    border-top: 1px solid #e8e2e2;// #1aac19;
+    background: #f9f9f9;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -44,7 +51,7 @@
         .chat,.chat-active{
           width: 24px;
           height: 24px;
-          /*display: inline-block;*/
+
         }
         .chat{
           background: url("../assets/img/chat.png") no-repeat;
