@@ -1,6 +1,8 @@
-# vue-demo
+# vue2.0 + vue-router2.0 + vuex2.0
 
 > A Vue.js project
+
+
 
 ## Build Setup
 
