@@ -2,6 +2,16 @@
   <div class="homepage">
     <page-header right-image="2" center-text="微信"></page-header>
     <div class="homepage-content">
+      <header class="homepage-content-search">
+        <div></div>
+        <div>
+          <i class="iconfont icon-normal-color">&#xe600;</i>
+          <span class="text">搜索</span>
+        </div>
+        <div>
+          <i class="iconfont icon-normal-color">&#xe601;</i>
+        </div>
+      </header>
       <ul class="">
         <li class="homepage-content-item" v-for="item in userMessage" @click="goDetail(item)">
           <div class="head-portrait">
@@ -21,8 +31,6 @@
       </ul>
     </div>
     <div @click="goMinions()">去看小黄人</div>
-
-
   </div>
 </template>
 
@@ -96,6 +104,11 @@
 
 <style lang="scss" scoped>
   .homepage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #ebebeb;
     &-header {
       text-align: center;
       color: #fff;
@@ -127,8 +140,19 @@
 
   }
   .homepage-content {
-    margin-top: 50px;
+
+    margin-top: 40px;
+    &-search{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 6px;
+      margin: 5px;
+
+    }
     &-item{
+
       position: relative;
       margin-left: 10px;
       border-top:1px solid #bbbaba;
