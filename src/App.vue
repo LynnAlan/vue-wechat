@@ -27,9 +27,11 @@ export default {
     },
     watch: {
       $route:function (val) {
-         const arr = [''];
+         const arr = ['homepage'];
          if(!arr.includes(val.name)){
             this.changeFooterState(false)
+         }else{
+           this.changeFooterState(true)
          }
       }
     }

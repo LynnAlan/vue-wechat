@@ -9,6 +9,7 @@ var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
+var fs = require('fs')
 
 var spinner = ora('building for production...')
 spinner.start()
@@ -25,7 +26,25 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       chunks: false,
       chunkModules: false
     }) + '\n\n')
-      //todo
+    let cssWhiteList = ["bootstrap.min.css"]
+    fs.readdir(config.build.assetsRoot+"/static/css", function(err, files) {
+      files.forEach(function(filename) {
+        if(cssWhiteList.indexOf(filename) != -1){
+          return;
+        }
+        console.log(filename);
+        if(/^.*css$/.test(filename)){
+          fs.readFile(config.build.assetsRoot+"/static/css/"+filename,'utf-8',function(err,data){
+            if(err) return
+            data = data.replace(/url\(static/g,"url(../../static");
+            fs.writeFile(config.build.assetsRoot+"/static/css/"+filename, data, (err) => {
+              if (err) throw err;
+              console.log('It\'s saved!');
+            });
+          });
+        }
+      });
+    });
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
       '  Tip: built files are meant to be served over an HTTP server.\n' +
