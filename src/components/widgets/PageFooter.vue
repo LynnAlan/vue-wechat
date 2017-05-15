@@ -1,19 +1,21 @@
 <template>
-    <div class="footer" v-show="footerState">
+    <div class="footer"  v-show="footerState < 5 " >
       <ul>
-        <li @click="goHome()">
-          <!-- <router-link :to="/"> test </router-link> -->
-            <div class="chat chat-active"></div>
-            <div>微信</div>
+        <li @click="goPage('/')"  >
+            <i class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==1}">&#xe606;</i>
+            <div :class="{'icon-active-color':footerState==1}">微信</div>
+        </li>
+        <li @click="goPage('/maillist')">
+          <i class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==2}" >&#xe602;</i>
+          <div :class="{'icon-active-color':footerState==2}">通讯录</div>
         </li>
         <li>
-          <div>通讯录</div>
+          <i class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==3}">&#xe607;</i>
+          <div :class="{'icon-active-color':footerState==3}">发现</div>
         </li>
         <li>
-          <div>发现</div>
-        </li>
-        <li>
-          <div>我</div>
+          <i class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==4}">&#xe60d;</i>
+          <div :class="{'icon-active-color':footerState==4}">我</div>
         </li>
       </ul>
     </div>
@@ -23,21 +25,24 @@
     export default {
         props:{
            footerState:{
-               type:Boolean,
-               default:true
+               type:Number,
+               default:1
            }
         },
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+
+        },
         methods: {
-            goHome(){
-                this.$router.push("/");
+            goPage(str){
+                this.$router.push(str);
             }
 
         },
         mounted() {
+            console.log(this.footerState)
         }
     }
 </script>
@@ -54,6 +59,12 @@
       justify-content:space-around;
       li{
         font-size: 12px;
+        text-align: center;
+        margin: 6px 0;
+        div{
+          line-height: 1;
+          margin-top: 4px;
+        }
         .chat,.chat-active{
           width: 24px;
           height: 24px;

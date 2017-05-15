@@ -5,7 +5,7 @@ import * as types from '../mutation-types'
 import {message} from '../model/homePage'
 const state = {
    message,
-   footerState:true
+   footerState:1
 }
 
 // getters

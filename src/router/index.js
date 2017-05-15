@@ -26,12 +26,12 @@ export default new Router({
         },
         {
             path: '/messagedetail',
-            name: 'MessageDetail',
+            name: 'messageDetail',
             component: MessageDetail
         },
         {
             path:'/maillist',
-            name:'MailList',
+            name:'mailList',
             component:MailList
         }
     ]

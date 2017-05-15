@@ -1,11 +1,14 @@
 <template>
   <div id="app">
+
     <!--<transition name="slide" >-->
       <keep-alive>
          <router-view ></router-view>
       </keep-alive>
+
     <!--</transition>-->
     <page-footer :footer-state="footerState"></page-footer>
+
   </div>
 </template>
 
@@ -27,11 +30,12 @@ export default {
     },
     watch: {
       $route:function (val) {
-         const arr = ['homepage'];
+         const arr = ['homepage','mailList'];
          if(!arr.includes(val.name)){
-            this.changeFooterState(false)
+            this.changeFooterState(6)
          }else{
-           this.changeFooterState(true)
+           let ind = arr.indexOf(val.name) + 1;
+           this.changeFooterState(ind)
          }
       }
     }
