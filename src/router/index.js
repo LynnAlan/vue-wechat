@@ -5,6 +5,7 @@ const Test = resolve => require(['@/components/Test'], resolve)
 const Minions = resolve => require(['@/components/Minions'],resolve)
 const Homepage = resolve =>require(['@/components/HomePage'],resolve)
 const MessageDetail = resolve =>require(['@/components/MessageDetail'],resolve)
+const MailList = resolve =>require(['@/components/MailList'],resolve)
 Vue.use(Router)
 export default new Router({
     routes: [
@@ -27,6 +28,11 @@ export default new Router({
             path: '/messagedetail',
             name: 'MessageDetail',
             component: MessageDetail
+        },
+        {
+            path:'/maillist',
+            name:'MailList',
+            component:MailList
         }
     ]
 })

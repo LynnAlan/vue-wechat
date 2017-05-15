@@ -1,10 +1,6 @@
 <template>
   <div class="homepage">
-    <header class="homepage-header">
-      <span>微信</span>
-      <span class="header-add"></span>
-    </header>
-
+    <page-header right-image="2" center-text="微信"></page-header>
     <div class="homepage-content">
       <ul class="">
         <li class="homepage-content-item" v-for="item in userMessage" @click="goDetail(item)">
@@ -31,10 +27,14 @@
 </template>
 
 <script>
+  import PageHeader from '@/components/widgets/PageHeader'
   import {mapGetters,mapActions} from 'vuex'
   export default {
       data() {
           return {}
+      },
+      components:{
+          PageHeader
       },
       computed: {
           ...mapGetters({
@@ -52,7 +52,6 @@
         ...mapActions({
               add: 'addMessage'
           })
-
 
       },
       mounted() {

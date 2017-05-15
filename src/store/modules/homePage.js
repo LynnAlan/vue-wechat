@@ -4,12 +4,14 @@
 import * as types from '../mutation-types'
 import {message} from '../model/homePage'
 const state = {
-   message
+   message,
+   footerState:true
 }
 
 // getters
 const getters = {
-    message:state => state.message
+    message:state => state.message,
+    footerState:state => state.footerState
 }
 
 // mutations
@@ -20,6 +22,9 @@ const mutations = {
               state.message.splice(i,1);
           }
       }
+  },
+  [types.CHANGE_FOOTER_STATE] (state, type) {
+      state.footerState = type;
   }
 }
 

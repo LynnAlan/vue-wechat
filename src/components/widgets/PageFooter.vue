@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div class="footer" v-show="footerState">
       <ul>
         <li @click="goHome()">
           <!-- <router-link :to="/"> test </router-link> -->
@@ -21,6 +21,12 @@
 
 <script>
     export default {
+        props:{
+           footerState:{
+               type:Boolean,
+               default:true
+           }
+        },
         data() {
             return {}
         },
@@ -54,11 +60,11 @@
 
         }
         .chat{
-          background: url("../assets/img/chat.png") no-repeat;
+          background: url("../../assets/img/chat.png") no-repeat;
           background-size: contain;
         }
         .chat-active{
-          background: url("../assets/img/chat-active.png")no-repeat;
+          background: url("../../assets/img/chat-active.png")no-repeat;
           background-size: contain;;
         }
       }

@@ -1,19 +1,6 @@
 <template>
     <div class="message-detail">
-      <header class="message-detail-header">
-        <ul>
-          <li @click="goBack()">
-            <span class="left-arrow"></span>
-            <span>微信</span>
-          </li>
-          <li>
-            大康书记
-          </li>
-          <li>
-            <span class="right-head"></span>
-          </li>
-        </ul>
-      </header>
+      <page-header go-url="/" right-image="1" :center-text="msg"></page-header>
       <section class="message-detail-content">
         <ul>
           <li v-for="item in message.msg">
@@ -22,8 +9,8 @@
               <span class="text">{{item.text}}</span>
             </div>
             <div class="right-message-text"  v-if="item.type == 2">
-              <span class="text">{{item.text}}</span>
               <span class="img"><img src="../assets/img/dakang.jpg" alt=""></span>
+              <span class="text">{{item.text}}</span>
             </div>
           </li>
         </ul>
@@ -33,10 +20,16 @@
 </template>
 
 <script>
+   import PageHeader from '@/components/widgets/PageHeader'
    import {mapGetters} from 'vuex'
     export default {
+        components:{
+          PageHeader
+        },
         data() {
-            return {}
+            return {
+                msg:"达康手机"
+            }
         },
         computed: {
           ...mapGetters({
@@ -102,10 +95,8 @@
           img{
             display: inline-block;
             height: 40px;
-
           }
           .left-message-text{
-
             overflow: hidden;
             .img{
               margin-right: 10px;
@@ -142,12 +133,12 @@
               top:7px;
             }
           }
-
           .right-message-text{
+            overflow: hidden;
             .img{
               margin-left: 6px;
+              float: right;
             }
-            text-align: right;
             .text{
               background: #9fe75a;
               color: #000;
@@ -155,13 +146,16 @@
               border-radius: 3px;
               position: relative;
               border: 1px solid #d5d5d5;
+              max-width: 67%;
+              float: right;
+              margin-right: 6px;
             }
             .text:after{
               position: absolute;
               content: '';
               border-width:6px 0 6px 6px ;
               border-style:solid;
-              border-color:transparent transparent transparent  #86f186;/*透明 灰 透明 透明 */
+              border-color:transparent transparent transparent  #9fe75a;/*透明 灰 透明 透明 */
               right:-6px;
               top:7px;
             }

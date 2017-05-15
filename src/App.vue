@@ -5,18 +5,34 @@
          <router-view ></router-view>
       </keep-alive>
     <!--</transition>-->
-    <page-footer></page-footer>
-
+    <page-footer :footer-state="footerState"></page-footer>
   </div>
 </template>
 
 <script>
-import PageFooter from '@/components/PageFooter'
+import {mapGetters,mapActions} from 'vuex'
+import PageFooter from '@/components/widgets/PageFooter'
 export default {
     name: 'app',
     components: {
       PageFooter
     },
+    computed: {
+      ...mapGetters([
+         'footerState'
+      ])
+    },
+    methods:{
+      ...mapActions(['changeFooterState'])
+    },
+    watch: {
+      $route:function (val) {
+         const arr = [''];
+         if(!arr.includes(val.name)){
+            this.changeFooterState(false)
+         }
+      }
+    }
 
 }
 </script>
