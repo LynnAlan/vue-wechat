@@ -1,6 +1,6 @@
-# vue2.0 + vue-router2.0 + vuex2.0
+# 一款基于vue2.0 单页面webapp
 
-> A Vue.js project
+> 利用vue2.X + vuex 2.X + vue-router2.X模仿微信。
 
 
 
