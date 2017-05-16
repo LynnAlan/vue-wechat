@@ -15,7 +15,22 @@
           </li>
         </ul>
       </section>
-      <footer></footer>
+      <footer class="message-detail-footer-list">
+        <ul >
+          <li>
+            <i  class=" iconfont icon-font icon-normal-color">&#xe68b;</i>
+          </li>
+          <li>
+            <input type="text" class="input-text">
+          </li>
+          <li>
+            <i class=" iconfont icon-font icon-normal-color">&#xe603;</i>
+          </li>
+          <li>
+            <i class=" iconfont icon-font icon-normal-color">&#xe711;</i>
+          </li>
+        </ul>
+      </footer>
     </div>
 </template>
 
@@ -171,6 +186,34 @@
           }
 
         }
+      }
+
+      &-footer-list{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        background: #f5f5f5;
+        line-height: 40px;
+        ul{
+          display: flex;
+          justify-content:space-around;
+          flex-direction: row;
+
+          li{
+            .input-text{
+              height:26px;
+              width:250px;
+              outline: none;
+              box-sizing: border-box;
+              border-radius: 3px;
+              position: relative;
+              top: -1px;
+
+            }
+          }
+        }
+
       }
   }
   .right-head{

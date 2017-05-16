@@ -141,18 +141,22 @@
   }
   .homepage-content {
 
-    margin-top: 40px;
+    margin-top: 46px;
     &-search{
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items:center;
       background: #fff;
       border-radius: 6px;
       margin: 5px;
+      padding: 1px 4px;
+      .text{
+        vertical-align: text-bottom;
+      }
 
     }
     &-item{
-
       position: relative;
       margin-left: 10px;
       border-top:1px solid #bbbaba;
@@ -161,6 +165,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items:Center;
         .time{
           font-size: 12px;
           color: #bbbaba;
