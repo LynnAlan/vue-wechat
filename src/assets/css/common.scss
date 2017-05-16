@@ -44,3 +44,17 @@
 .icon-active-color{
   color: #1aac19;
 }
+@keyframes right-swiper{
+  30%{
+    transform: translateX(20px);
+  }
+  60%{
+    transform: translateX(-10px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+.animate-right-swiper{
+  animation:right-swiper 0.8s ease-in;
+}

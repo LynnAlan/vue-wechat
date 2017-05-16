@@ -6,7 +6,9 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
+import directives from './assets/js/directives'
 
+directives(Vue)
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

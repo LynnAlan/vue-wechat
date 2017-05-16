@@ -2,7 +2,7 @@
   <div class="homepage">
     <page-header right-image="2" center-text="微信"></page-header>
     <div class="homepage-content">
-      <header class="homepage-content-search">
+      <header class="homepage-content-search" >
         <div></div>
         <div>
           <i class="iconfont icon-normal-color">&#xe600;</i>
@@ -13,7 +13,8 @@
         </div>
       </header>
       <ul class="">
-        <li class="homepage-content-item" v-for="item in userMessage" @click="goDetail(item)">
+        <li class="homepage-content-item" :class="{'animate-right-swiper':index==rightSwiper}" v-for="(item,index) in userMessage"  v-touch:swiperight="{'fun':rightSwiperFun,'item':index}">
+          <!--{{index}}-->
           <div class="head-portrait">
             <span class="warning"></span>
             <img src="../assets/img/dakang.jpg" alt="">
@@ -27,6 +28,9 @@
               <span>{{item.msg[0].text}}</span>
             </div>
           </div>
+          <div class="msg-status">
+            <span>标为未读</span><span>删除</span>
+          </div>
         </li>
       </ul>
     </div>
@@ -39,7 +43,9 @@
   import {mapGetters,mapActions} from 'vuex'
   export default {
       data() {
-          return {}
+          return {
+            rightSwiper:-1
+          }
       },
       components:{
           PageHeader
@@ -59,7 +65,13 @@
           },
         ...mapActions({
               add: 'addMessage'
-          })
+          }),
+        rightSwiperFun(el, binding, item){
+             this.rightSwiper = item;
+             setTimeout(()=>{
+               this.rightSwiper = -1;
+             },1000);
+          }
 
       },
       mounted() {
@@ -154,7 +166,6 @@
       .text{
         vertical-align: text-bottom;
       }
-
     }
     &-item{
       position: relative;
@@ -174,6 +185,8 @@
       .text{
           font-size: 14px;
           color: #bbbaba;
+          overflow: hidden;
+          height: 26px;
       }
       .head-portrait {
         img{

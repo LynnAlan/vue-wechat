@@ -4,12 +4,12 @@
 export default(Vue) => {
   Vue.directive('touch', {
     bind: function (el, binding, vnode) {
+      console.log(el, binding.value, vnode)
       var touchType = binding.arg; //传入的模式 press swipeRight swipeLeft swipeTop swipeDowm Tap
       var timeOutEvent = 0;
       var direction = '';
       //滑动处理
       var startX, startY;
-
       //返回角度
       function GetSlideAngle(dx, dy) {
         return Math.atan2(dy, dx) * 180 / Math.PI;
@@ -49,14 +49,14 @@ export default(Vue) => {
         timeOutEvent = setTimeout(() =>{
           timeOutEvent = 0 ;
           if(touchType === 'press'){
-            binding.value()
+            binding.value(el, binding)
           }
         } , 500);
 
       }, false);
 
       el.addEventListener('touchmove' , function (ev) {
-        clearTimeout(timeOutEvent)
+        clearTimeout(timeOutEvent);
         timeOutEvent = 0;
       });
 
@@ -74,22 +74,22 @@ export default(Vue) => {
             break;
           case 'swipeup':
             if(touchType === 'swipeup'){
-              binding.value()
+              binding.value(el, binding,vnode)
             }
             break;
           case 'swipedown':
             if(touchType === 'swipedown'){
-              binding.value()
+              binding.value(el, binding)
             }
             break;
           case 'swipeleft':
             if(touchType === 'swipeleft'){
-              binding.value()
+              binding.value(el, binding)
             }
             break;
           case 'swiperight':
             if(touchType === 'swiperight'){
-              binding.value()
+              binding.value.fun(el, binding,binding.value.item);
             }
             break;
           default:
