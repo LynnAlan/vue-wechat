@@ -1,6 +1,7 @@
 # 一款基于vue2.0 单页面webapp
 
 > 利用vue2.X + vuex 2.X + vue-router2.X模仿微信。
+## 初稿交互图
 ## ![初稿交互图](./static/jdfw.gif)
 
 
