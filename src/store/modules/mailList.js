@@ -4,14 +4,14 @@
 import * as types from '../mutation-types'
 import {maillist} from '../model/mailList'
 const state = {
-  maillist
+    maillist
 }
 // getters
 const getters = {
-  maillist:state => state.maillist
+    maillist: state => state.maillist
 }
 
 export default {
-  state,
-  getters
+    state,
+    getters
 }
