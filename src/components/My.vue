@@ -21,9 +21,31 @@
             </div>
           </header>
           <article>
-            <ul>
-              <li>
-
+            <ul class="item-content">
+              <li class="item-content-list" v-for="item in listData">
+                <div>
+                  <span class="icon-font" :class="item.class"></span>
+                  <span>{{item.text}}</span>
+                </div>
+                <div class="right-arrow"></div>
+              </li>
+            </ul>
+            <ul class="item-content">
+              <li class="item-content-list">
+                <div>
+                  <span class="icon-font expression" ></span>
+                  <span>表情</span>
+                </div>
+                <div class="right-arrow"></div>
+              </li>
+            </ul>
+            <ul class="item-content">
+              <li class="item-content-list">
+                <div>
+                  <span class="icon-font my-setting" ></span>
+                  <span>设置</span>
+                </div>
+                <div class="right-arrow"></div>
               </li>
             </ul>
           </article>
@@ -38,7 +60,26 @@
           PageHeader
         },
         data() {
-            return {}
+            return {
+                'listData':[
+                    {
+                        class:'my-album',
+                        text:'相册'
+                    },
+                    {
+                        class:'my-favorites',
+                        text:'收藏'
+                    },
+                    {
+                        class:'my-bank-card',
+                        text:'钱包'
+                    },
+                    {
+                        class:'my-card-package',
+                        text:'卡包'
+                    }
+                ]
+            }
         },
         computed: {},
         methods: {},
@@ -85,6 +126,14 @@
           }
         }
 
+      }
+
+      .icon-font{
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        vertical-align: middle;
       }
     }
 </style>

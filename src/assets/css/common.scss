@@ -68,3 +68,30 @@
   animation:right-swiper 0.8s ease-in;
 }
 
+.item-content{
+  margin: 10px 0;
+  background: #fff;
+  border-bottom:  1px solid #e8e2e2;
+  border-top: 1px solid #e8e2e2;
+  &-list{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #d6d0d0;
+    .right-arrow{
+      margin-right: 16px;
+      color: #a7a7a7;
+      margin-top: 6px;
+    }
+  }
+  &-list:nth-last-of-type(1){
+    border-bottom: none;
+  }
+}
+
+@each $icon in my-album, my-favorites,my-bank-card,my-card-package,expression,my-setting,friend-circle, shake, qrcode,play-game,location-service,bottle,shopping {
+  .#{$icon} {
+    background: url('./assets/img/#{$icon}.png');
+  }
+}
