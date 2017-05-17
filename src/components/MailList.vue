@@ -26,8 +26,16 @@
             <span class="text">标签</span>
           </li>
           <li class="item-text">
+
             <span class="public-number icon"></span>
             <span class="text">公众号</span>
+          </li>
+        </ul>
+        <ul  v-for="item in maillist">
+          <p class="header">{{item.serial}}</p>
+          <li class="item-text-name" v-for="i in item.user">
+            <img :src="i.img" class="mail-list-img">
+            <span class="text">{{i.name}}</span>
           </li>
         </ul>
       </div>
@@ -36,6 +44,7 @@
 
 <script>
     import PageHeader from '@/components/widgets/PageHeader'
+    import {mapGetters} from 'vuex'
     export default {
         components:{
           PageHeader
@@ -43,7 +52,11 @@
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+          ...mapGetters([
+              'maillist'
+          ])
+        },
         methods: {},
         mounted() {
         }
@@ -76,13 +89,28 @@
             vertical-align: middle;
             font-size: $font-size-mid;
             margin-left: 10px;
-
           }
-
+        }
+        .item-text-name{
+          padding: 8px 0;
+          font-size: 0;
+          box-sizing: border-box;
+          border-bottom: 1px solid #e8e2e2;
+          margin-left: 10px;
+          p, .text{
+            display: inline-block;
+            vertical-align: middle;
+            font-size: $font-size-mid;
+            margin-left: 10px;
+          }
+        }
+        p.header{
+          background: #ebebeb;
+          padding-left: 10px;
         }
       }
     }
-    .icon{
+    .mail-list-img, .icon{
       display: inline-block;
       height: 30px;
       width: 30px;

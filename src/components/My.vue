@@ -127,7 +127,6 @@
         }
 
       }
-
       .icon-font{
         display: inline-block;
         height: 20px;
