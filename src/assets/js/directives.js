@@ -4,7 +4,6 @@
 export default(Vue) => {
   Vue.directive('touch', {
     bind: function (el, binding, vnode) {
-      console.log(el, binding.value, vnode)
       var touchType = binding.arg; //传入的模式 press swipeRight swipeLeft swipeTop swipeDowm Tap
       var timeOutEvent = 0;
       var direction = '';
@@ -84,7 +83,7 @@ export default(Vue) => {
             break;
           case 'swipeleft':
             if(touchType === 'swipeleft'){
-              binding.value(el, binding)
+              binding.value.fun(el, binding,binding.value.item);
             }
             break;
           case 'swiperight':

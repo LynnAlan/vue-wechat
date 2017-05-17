@@ -13,23 +13,25 @@
         </div>
       </header>
       <ul class="">
-        <li class="homepage-content-item" :class="{'animate-right-swiper':index==rightSwiper}" v-for="(item,index) in userMessage"  v-touch:swiperight="{'fun':rightSwiperFun,'item':index}">
-          <!--{{index}}-->
-          <div class="head-portrait">
-            <span class="warning"></span>
-            <img src="../assets/img/dakang.jpg" alt="">
-          </div>
-          <div class="chat-text">
-            <div class="name">
-              <span class="memo-name">{{item.name}}</span>
-              <span class="time">{{item.time}}</span>
-            </div>
-            <div class="text">
-              <span>{{item.msg[0].text}}</span>
-            </div>
-          </div>
+
+        <li class="homepage-content-item"  v-for="(item,index) in userMessage"  >
+          <article v-touch:swiperight="{'fun':rightSwiperFun,'item':index}"  v-touch:swipeleft="{'fun':leftSwiperFun,'item':index}" :class="{'animate-right-swiper':index==rightSwiper,'animate-left-swiper':index==leftSwiper}">
+              <div class="head-portrait">
+                <span class="warning"></span>
+                <img src="../assets/img/dakang.jpg" alt="">
+              </div>
+              <div class="chat-text">
+                <div class="name">
+                  <span class="memo-name">{{item.name}}</span>
+                  <span class="time">{{item.time}}</span>
+                </div>
+                <div class="text">
+                  <span>{{item.msg[0].text}}</span>
+                </div>
+              </div>
+          </article>
           <div class="msg-status">
-            <span>标为未读</span><span>删除</span>
+            <span class="not-read">标为未读</span><span class="delete">删除</span>
           </div>
         </li>
       </ul>
@@ -44,7 +46,8 @@
   export default {
       data() {
           return {
-            rightSwiper:-1
+            rightSwiper:-1,
+            leftSwiper:-1
           }
       },
       components:{
@@ -63,14 +66,21 @@
               this.$router.push("/messagedetail");
               this.add(data);
           },
-        ...mapActions({
+          ...mapActions({
               add: 'addMessage'
           }),
-        rightSwiperFun(el, binding, item){
-             this.rightSwiper = item;
-             setTimeout(()=>{
-               this.rightSwiper = -1;
-             },1000);
+          rightSwiperFun(el, binding, item){
+               if(this.leftSwiper != -1){
+                   this.leftSwiper = -1;
+                   return;
+               }
+               this.rightSwiper = item;
+               setTimeout(()=>{
+                 this.rightSwiper = -1;
+               },1000);
+          },
+          leftSwiperFun(el, binding, item){
+            this.leftSwiper = item;
           }
 
       },
@@ -171,7 +181,40 @@
       position: relative;
       margin-left: 10px;
       border-top:1px solid #bbbaba;
-      padding: 10px 0;
+
+      article{
+        padding: 10px 0;
+        position: relative;
+        background: #ebebeb;
+        z-index: 99;
+        transform: translateX(0);
+        transition: all 0.8s ease;
+      }
+      article.animate-left-swiper{
+        transform: translateX(-144px);
+
+      }
+      .msg-status{
+        position: absolute;
+        right: 0;
+        top: 0px;
+        z-index: 1;
+        height: 68px;
+        line-height: 68px;
+        z-index: 9;
+        .not-read{
+          display: inline-block;
+          color: #fff;
+          background: #a29e9e;
+          padding: 0 15px;
+        }
+        .delete{
+          color: #fff;
+          display: inline-block;
+          background: red;
+          padding: 0 15px;
+        }
+      }
       .name {
         display: flex;
         flex-direction: row;
