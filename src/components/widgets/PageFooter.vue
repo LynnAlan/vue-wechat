@@ -10,7 +10,7 @@
           <div :class="{'icon-active-color':footerState==2}">通讯录</div>
         </li>
         <li>
-          <i class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==3}">&#xe607;</i>
+          <i @click="goPage('/find')" class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==3}">&#xe607;</i>
           <div :class="{'icon-active-color':footerState==3}">发现</div>
         </li>
         <li>

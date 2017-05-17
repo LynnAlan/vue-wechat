@@ -4,7 +4,7 @@
 
 const message = [
   {
-    headPortrait:'',
+    headPortrait:'http://i1.piimg.com/594571/e8a18304aa1c1fcbt.jpg',
     name:'达康书记',
     time:'2017/02/06',
     msg:[
@@ -23,8 +23,46 @@ const message = [
     ]
   },
   {
-    headPortrait:'',
-    name:'达康书记',
+    headPortrait:'http://i1.piimg.com/594571/0b1f149c82ae0af0t.jpg',
+    name:'沙书记',
+    time:'2017/02/06',
+    msg:[
+      {
+        type:1,
+        text:'没有'
+      },
+      {
+        type:2,
+        text:'没有'
+      },
+      {
+        type:1,
+        text:'没有'
+      }
+    ]
+  },
+  {
+    headPortrait:'http://i1.piimg.com/594571/058f4233cbaff76ft.jpg',
+    name:'祁厅长',
+    time:'2017/02/06',
+    msg:[
+      {
+        type:1,
+        text:'没有'
+      },
+      {
+        type:2,
+        text:'没有'
+      },
+      {
+        type:1,
+        text:'没有'
+      }
+    ]
+  },
+  {
+    headPortrait:'http://i1.piimg.com/594571/289fc7e9abea0268t.jpg',
+    name:'老师',
     time:'2017/02/06',
     msg:[
       {

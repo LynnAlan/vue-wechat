@@ -5,11 +5,11 @@
         <ul>
           <li v-for="item in message.msg">
             <div class="left-message-text" v-if="item.type == 1">
-              <span class="img"><img src="../assets/img/dakang.jpg" alt=""></span>
+              <span class="img"><img :src="message.headPortrait" alt=""></span>
               <span class="text">{{item.text}}</span>
             </div>
             <div class="right-message-text"  v-if="item.type == 2">
-              <span class="img"><img src="../assets/img/dakang.jpg" alt=""></span>
+              <span class="img"><img src="http://i1.piimg.com/594571/092995e67ddf365bt.jpg" alt=""></span>
               <span class="text">{{item.text}}</span>
             </div>
           </li>
@@ -66,7 +66,8 @@
           console.log(3)
         },
         deactivated: function () {
-          console.log(4)
+          console.log(4);
+          console.log(this.message);
         }
     }
 </script>

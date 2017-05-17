@@ -8,8 +8,8 @@
           <li>
             {{centerText}}
           </li>
-          <li>
-            <span :class="{'right-head':rightImage==1,'right-add':rightImage==2}"></span>
+          <li class="right-head-text">
+            <span class="right" :class="{'right-head':rightImage==1,'right-add':rightImage==2}"></span>
           </li>
         </ul>
     </div>
@@ -50,7 +50,6 @@
               }
         },
         mounted() {
-            console.log(this.goBack)
 
         }
     }
@@ -80,25 +79,29 @@
       }
 
     }
-    .right-head{
+    .right{
       display: inline-block;
       width: 18px;
       height: 18px;
+      right:-22px;
+      position: relative;
+    }
+    .right-head-text{
+      position: relative;
+      right: 10px ;
+      width: 40px;
+    }
+    .right-head{
       background: url("../../assets/img/head.png") no-repeat ;
       background-size: contain;
       vertical-align: text-bottom;
-      position: relative;
-      right:6px;
+
     }
     .right-add{
-      display: inline-block;
-      width: 18px;
-      height: 18px;
       background: url("../../assets/img/add.png") no-repeat ;
       background-size: contain;
       vertical-align: text-bottom;
-      position: relative;
-      right:6px;
+
     }
   }
 </style>

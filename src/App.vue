@@ -30,7 +30,7 @@ export default {
     },
     watch: {
       $route:function (val) {
-         const arr = ['homepage','mailList'];
+         const arr = ['homepage','mailList','find'];
          if(!arr.includes(val.name)){
             this.changeFooterState(6)
          }else{
