@@ -14,7 +14,7 @@
           <div :class="{'icon-active-color':footerState==3}">发现</div>
         </li>
         <li>
-          <i class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==4}">&#xe60d;</i>
+          <i @click="goPage('/my')" class=" iconfont icon-font icon-normal-color" :class="{'icon-active-color':footerState==4}">&#xe60d;</i>
           <div :class="{'icon-active-color':footerState==4}">我</div>
         </li>
       </ul>

@@ -35,7 +35,7 @@
         </li>
       </ul>
     </div>
-    <div @click="goMinions()">去看小黄人</div>
+    <!--<div @click="goMinions()">去看小黄人</div>-->
   </div>
 </template>
 

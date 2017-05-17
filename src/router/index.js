@@ -7,6 +7,7 @@ const Homepage = resolve =>require(['@/components/HomePage'],resolve)
 const MessageDetail = resolve =>require(['@/components/MessageDetail'],resolve)
 const MailList = resolve =>require(['@/components/MailList'],resolve)
 const Find = resolve =>require(['@/components/Find'],resolve)
+const My = resolve =>require(['@/components/My'],resolve)
 Vue.use(Router)
 export default new Router({
     routes: [
@@ -39,6 +40,11 @@ export default new Router({
             path:'/find',
             name:'find',
             component:Find
+        },
+        {
+          path:'/my',
+          name:'my',
+          component:My
         }
     ]
 })
