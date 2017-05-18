@@ -7,6 +7,11 @@
 ## 跳转到其他页面
 ## ![其他页面](./static/gopage.gif)
 ## 安装本地跑起来
+### 技术点
+1.vue
+2.vuex
+3.vue-router
+4.scss
 
 ``` bash
 # install dependencies
