@@ -4,7 +4,7 @@
 export default(Vue) => {
     Vue.directive('touch', {
         bind: function (el, binding, vnode) {
-            var touchType = binding.arg; //传入的模式 press swipeRight swipeLeft swipeTop swipeDowm Tap
+            var touchType = binding.arg; //传入的模式 longTap swipeRight swipeLeft swipeTop swipeDowm
             var timeOutEvent = 0;
             var direction = '';
             //滑动处理
@@ -47,7 +47,7 @@ export default(Vue) => {
                 //判断长按
                 timeOutEvent = setTimeout(() => {
                     timeOutEvent = 0;
-                    if (touchType === 'press') {
+                    if (touchType === 'longTap') {
                         binding.value(el, binding)
                     }
                 }, 500);

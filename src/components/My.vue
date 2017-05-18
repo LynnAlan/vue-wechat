@@ -6,8 +6,7 @@
                 <div class="header-left">
                     <img src="http://i1.piimg.com/594571/092995e67ddf365bt.jpg" alt="">
                 </div><!--
-            -->
-                <div class="header-right">
+             --><div class="header-right">
                     <div class="fl">
                         <div>侯亮平</div>
                         <div>
