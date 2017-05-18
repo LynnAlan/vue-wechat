@@ -26,7 +26,6 @@
                     <span class="text">标签</span>
                 </li>
                 <li class="item-text">
-
                     <span class="public-number icon"></span>
                     <span class="text">公众号</span>
                 </li>

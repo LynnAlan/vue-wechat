@@ -99,7 +99,6 @@
                 add: 'addMessage'
             }),
             changeMessageStatus(e, id,status,str){
-//                this.leftSwiper = -1;
                 e.stopPropagation();
                 if(str){
                     if(status == 1){
@@ -108,7 +107,6 @@
                         status = 1
                     }
                 }
-
                 this.$store.dispatch('changeMessageStatus', {id,status});
 
             },

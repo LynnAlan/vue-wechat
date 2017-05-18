@@ -8,10 +8,18 @@
 ## ![其他页面](./static/gopage.gif)
 ## 安装本地跑起来
 ### 技术点
-1.vue
-2.vuex
-3.vue-router
-4.scss
+- vue
+- vuex
+- vue-router
+- vue-cli
+- scss
+- webpack
+- node
+
+### 自我的一些特点
+主页面消息列表左右滑动，通过css3加上自己写的`v-touch`指令实现基本通微信相似的交互效果。
+消息内容主要是`vuex`控制，通过`vuex`的辅助函数`mapState,mapGetters, mapActions, mapMutations `来实现各个数据连接。
+
 
 ``` bash
 # install dependencies
