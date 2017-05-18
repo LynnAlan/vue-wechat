@@ -1,6 +1,6 @@
 <template>
     <div class="homepage">
-        <page-header right-image="2" center-text="微信"></page-header>
+        <page-header right-image="2" :center-text="msgHead"></page-header>
         <div class="homepage-content">
             <header class="homepage-content-search">
                 <div></div>
@@ -13,28 +13,31 @@
                 </div>
             </header>
             <ul  v-show="showMsg != 0">
-                <li class="homepage-content-item" v-for="(item,index) in userMessage" @click="goDetail(item)" :class="{'status-hide':item.readStatus==3}">
-                    <article v-touch:swiperight="{'fun':rightSwiperFun,'item':index}"
-                             v-touch:swipeleft="{'fun':leftSwiperFun,'item':index}"
-                             :class="{'animate-right-swiper':index==rightSwiper,'animate-left-swiper':index==leftSwiper}">
-                        <div class="head-portrait">
-                            <span :class="{'warning':item.readStatus==2}" v-show="item.readStatus==2" ><span class="warin-num">1</span></span>
-                            <img :src="item.headPortrait" alt="">
-                        </div>
-                        <div class="chat-text">
-                            <div class="name">
-                                <span class="memo-name">{{item.name}}</span>
-                                <span class="time">{{item.time}}</span>
+                <transition name="fade" v-for="(item,index) in userMessage">
+                    <li class="homepage-content-item"  @click="goDetail(item)"  v-if="item.readStatus!=3" >
+                        <article v-touch:swiperight="{'fun':rightSwiperFun,'item':index}"
+                                 v-touch:swipeleft="{'fun':leftSwiperFun,'item':index}"
+                                 :class="{'animate-right-swiper':index==rightSwiper,'animate-left-swiper':index==leftSwiper}">
+                            <div class="head-portrait">
+                                <span :class="{'warning':item.readStatus==2}" v-show="item.readStatus==2" ><span class="warin-num">1</span></span>
+                                <img :src="item.headPortrait" alt="">
                             </div>
-                            <div class="text">
-                                <span>{{item.msg[0].text}}</span>
+                            <div class="chat-text">
+                                <div class="name">
+                                    <span class="memo-name">{{item.name}}</span>
+                                    <span class="time">{{item.time}}</span>
+                                </div>
+                                <div class="text">
+                                    <span>{{item.msg[0].text}}</span>
+                                </div>
                             </div>
+                        </article>
+                        <div class="msg-status">
+                            <span class="not-read" @click="changeMessageStatus($event,item.id,item.readStatus,'change')">{{item.readStatus==2?'标为已读':'标为未读'}}</span><span class="delete" @click="changeMessageStatus($event,item.id,'3')">删除</span>
                         </div>
-                    </article>
-                    <div class="msg-status">
-                        <span class="not-read" @click="changeMessageStatus($event,item.id,item.readStatus,'change')">{{item.readStatus==2?'标为已读':'标为未读'}}</span><span class="delete" @click="changeMessageStatus($event,item.id,'3')">删除</span>
-                    </div>
-                </li>
+                    </li>
+                </transition>
+
             </ul>
         </div>
         <!--<div @click="goMinions()">去看小黄人</div>-->
@@ -67,6 +70,20 @@
                     }
                 }
                 return arr.length;
+            },
+            msgHead(){
+                let arr = [],msg='';
+                for(let item of this.userMessage){
+                    if(item.readStatus == 2){
+                        arr.push('');
+                    }
+                }
+                if(arr.length == 0){
+                    msg = '微信'
+                }else{
+                    msg = "微信(" + arr.length + ")";
+                }
+                return msg;
             }
         },
         methods: {
@@ -82,7 +99,7 @@
                 add: 'addMessage'
             }),
             changeMessageStatus(e, id,status,str){
-                this.leftSwiper = -1;
+//                this.leftSwiper = -1;
                 e.stopPropagation();
                 if(str){
                     if(status == 1){
@@ -242,9 +259,7 @@
                 vertical-align: top;
                 margin-right: 10px;
             }
-            .status-hide{
-                border-top: none;
-            }
+
 
         }
         &-item:nth-of-type(1) {
@@ -267,11 +282,13 @@
                 top: -3px;
             }
         }
-        .status-hide{
-            min-height:  0;
-            transition: all 0.2s ease;
+        .fade-enter-active, .fade-leave-active {
+            transition: all 0.5s ease;
+        }
+        .fade-enter, .fade-leave-active {
             opacity: 0;
             height: 0;
+            min-height:  0;
         }
     }
 
