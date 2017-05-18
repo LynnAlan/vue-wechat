@@ -1,14 +1,11 @@
 <template>
     <div id="app">
-
-        <!--<transition name="slide" >-->
-        <keep-alive>
-            <router-view></router-view>
-        </keep-alive>
-
-        <!--</transition>-->
+        <transition name="fade" >
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+        </transition>
         <page-footer :footer-state="footerState"></page-footer>
-
     </div>
 </template>
 
@@ -46,15 +43,21 @@
 <style lang="scss">
     @import "./assets/css/reset";
     @import "./assets/css/common";
-
-    .slide-enter-active, .slide-leave-active {
-        transition: .25s all ease;
-        transform: translate3d(0, 0, 0);
+    #app{
+        position: absolute;
+        background: #ebebeb;
+        width: 100%;
+        height: 100%;
     }
-
-    .slide-enter, .slide-leave {
+    .fade-enter-active, .fade-leave-active {
+        /*transform: translateX(0);*/
+        transition:all .25s ease;
+    }
+    .fade-enter{
+        transform: translateX(30%);
+    }
+    .fade-leave-active{
         opacity: 0;
-        transform: translate3d(50%, 0, 0);
     }
 
 
