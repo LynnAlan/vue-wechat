@@ -6,7 +6,7 @@
 
 ## 跳转到其他页面
 ## ![其他页面](./static/gopage.gif)
-## 安装本地跑起来
+
 ### 技术点
 - vue
 - vuex
@@ -20,7 +20,7 @@
 主页面消息列表左右滑动，通过css3加上自己写的`v-touch`指令实现基本通微信相似的交互效果。
 消息内容主要是`vuex`控制，通过`vuex`的辅助函数`mapState,mapGetters, mapActions, mapMutations `来实现各个数据连接。
 
-
+## 安装本地跑起来
 ``` bash
 # install dependencies
 npm install
