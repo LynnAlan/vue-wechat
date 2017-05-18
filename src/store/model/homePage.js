@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/5/10 0010.
  */
-
+//readStatus 1:已读，2：未读，3：已删除
 const message = [
     {
         id: 1,
@@ -21,7 +21,8 @@ const message = [
                 type: 2,
                 text: '到底有没有'
             }
-        ]
+        ],
+        readStatus:1
     },
     {
         id: 2,
@@ -41,7 +42,8 @@ const message = [
                 type: 2,
                 text: '你好'
             }
-        ]
+        ],
+        readStatus:2
     },
     {
         id: 3,
@@ -50,18 +52,23 @@ const message = [
         time: '2017/02/06',
         msg: [
             {
+                type: 2,
+                text: '你到底有没有贪污'
+            },
+            {
                 type: 1,
                 text: '没有'
             },
             {
                 type: 2,
-                text: '没有'
+                text: '真的吗？'
             },
             {
-                type: 1,
-                text: '没有'
+                type:1,
+                text:'你在逗我吗？'
             }
-        ]
+        ],
+        readStatus:1
     },
     {
         id: 4,
@@ -81,7 +88,8 @@ const message = [
                 type: 1,
                 text: '再见，再也不见了'
             }
-        ]
+        ],
+        readStatus:1
     }
 ]
 export {message}

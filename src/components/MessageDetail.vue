@@ -43,13 +43,16 @@
         },
         data() {
             return {
-                msg: "达康手机"
+
             }
         },
         computed: {
             ...mapGetters({
                 message: 'itemMessage'
-            })
+            }),
+            msg(){
+                return this.message.name;
+            }
         },
         methods: {
             goBack(){

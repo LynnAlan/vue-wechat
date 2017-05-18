@@ -16,16 +16,12 @@ const getters = {
 
 // mutations
 const mutations = {
-
-    [types.DELETE_MESSAGE] (state, id) {
-        let tempArr = [];
+    [types.CHANGE_MESSAGE_STATUS] (state,{id,status}) {
         for (let i = 0, leng = state.message.length; i < leng; i++) {
             if (state.message[i].id == id) {
-                continue;
+                state.message[i].readStatus = status;
             }
-            tempArr.push(state.message[i]);
         }
-        state.message = tempArr;
     },
     [types.CHANGE_FOOTER_STATE] (state, type) {
         state.footerState = type;

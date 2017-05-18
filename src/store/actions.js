@@ -6,11 +6,11 @@ const addMessage = ({commit}, data) => {
 const changeName = ({dispatch}, name = 'wo') => {
     dispatch(types.CHANGE_NAME, {name});
 }
-const deleteMessage = ({commit}, id) => {
-    commit(types.DELETE_MESSAGE, id)
+const changeMessageStatus = ({commit}, {id,status}) => {
+    commit(types.CHANGE_MESSAGE_STATUS, {id,status})
 }
 const changeFooterState = ({commit}, value) => {
     commit(types.CHANGE_FOOTER_STATE, value);
 }
 
-export {addMessage, changeName, deleteMessage, changeFooterState}
+export {addMessage, changeName, changeMessageStatus, changeFooterState}

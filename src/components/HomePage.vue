@@ -12,13 +12,13 @@
                     <i class="iconfont icon-normal-color">&#xe601;</i>
                 </div>
             </header>
-            <ul class="">
-                <li class="homepage-content-item" v-for="(item,index) in userMessage" @click="goDetail(item)" :class="">
+            <ul  v-show="showMsg != 0">
+                <li class="homepage-content-item" v-for="(item,index) in userMessage" @click="goDetail(item)" :class="{'status-hide':item.readStatus==3}">
                     <article v-touch:swiperight="{'fun':rightSwiperFun,'item':index}"
                              v-touch:swipeleft="{'fun':leftSwiperFun,'item':index}"
                              :class="{'animate-right-swiper':index==rightSwiper,'animate-left-swiper':index==leftSwiper}">
                         <div class="head-portrait">
-                            <span class="warning"></span>
+                            <span :class="{'warning':item.readStatus==2}" v-show="item.readStatus==2" ><span class="warin-num">1</span></span>
                             <img :src="item.headPortrait" alt="">
                         </div>
                         <div class="chat-text">
@@ -32,8 +32,7 @@
                         </div>
                     </article>
                     <div class="msg-status">
-                        <span class="not-read">标为未读</span><span class="delete"
-                                                                @click="deleteMessage($event,item.id)">删除</span>
+                        <span class="not-read" @click="changeMessageStatus($event,item.id,item.readStatus,'change')">{{item.readStatus==2?'标为已读':'标为未读'}}</span><span class="delete" @click="changeMessageStatus($event,item.id,'3')">删除</span>
                     </div>
                 </li>
             </ul>
@@ -49,7 +48,8 @@
         data() {
             return {
                 rightSwiper: -1,
-                leftSwiper: -1
+                leftSwiper: -1,
+                test:false
             }
         },
         components: {
@@ -58,7 +58,16 @@
         computed: {
             ...mapGetters({
                 userMessage: "message"
-            })
+            }),
+            showMsg(){
+                let arr = [];
+                for(let item of this.userMessage){
+                    if(item.readStatus == 1||item.readStatus == 2){
+                        arr.push('');
+                    }
+                }
+                return arr.length;
+            }
         },
         methods: {
             goMinions(){
@@ -67,14 +76,24 @@
             goDetail(data){
                 this.$router.push("/messagedetail");
                 this.add(data);
+                this.$store.dispatch('changeMessageStatus', {id:data.id,status:1});
             },
             ...mapActions({
                 add: 'addMessage'
             }),
-            deleteMessage(e, id){
+            changeMessageStatus(e, id,status,str){
                 this.leftSwiper = -1;
                 e.stopPropagation();
-                this.$store.dispatch('deleteMessage', id);
+                if(str){
+                    if(status == 1){
+                        status = 2
+                    }else {
+                        status = 1
+                    }
+                }
+
+                this.$store.dispatch('changeMessageStatus', {id,status});
+
             },
             rightSwiperFun(el, binding, item){
                 if (this.leftSwiper != -1) {
@@ -136,7 +155,6 @@
     }
 
     .homepage-content {
-
         margin-top: 46px;
         &-search {
             display: flex;
@@ -151,11 +169,16 @@
                 vertical-align: text-bottom;
             }
         }
+        ul{
+            border-bottom: 1px solid #bbbaba;
+            border-top: 1px solid #bbbaba;
+        }
         &-item {
             position: relative;
             margin-left: 10px;
             border-top: 1px solid #bbbaba;
-
+            min-height: 70px;
+            overflow: hidden;
             article {
                 padding: 10px 0;
                 position: relative;
@@ -219,20 +242,36 @@
                 vertical-align: top;
                 margin-right: 10px;
             }
+            .status-hide{
+                border-top: none;
+            }
 
         }
-        &-item:last-of-type {
-            border-bottom: 1px solid #bbbaba;
+        &-item:nth-of-type(1) {
+            border-top: none;
         }
+
         .warning {
             position: absolute;
-            content: '';
-            height: 6px;
-            width: 6px;
+            height: 16px;
+            width: 16px;
             border-radius: 50%;
             background: red;
-            left: 46px;
+            left: 36px;
             top: 8px;
+            .warin-num{
+                position: absolute;
+                color: #fff;
+                font-size: 12px;
+                left: 4px;
+                top: -3px;
+            }
+        }
+        .status-hide{
+            min-height:  0;
+            transition: all 0.2s ease;
+            opacity: 0;
+            height: 0;
         }
     }
 
